@@ -17,7 +17,7 @@ function Avatar({seed, large}: Props) {
   return (
     // incase of unassigned topic, name of authenticated user is used
     <div className={`${large ? `h-20 w-20`: `h-10 w-10`} overflow-hidden relative border-gray-300 bg-white`}>
-        <Image fill src={`https://api.dicebear.com/5.x/fun-emoji/svg?seed=${seed || session?.user?.name || 'placeholder'}.svg`} alt="avatar"/>
+        <Image fill src={`https://api.dicebear.com/5.x/micah/svg?seed=${seed || session?.user?.name || 'placeholder'}.svg`} alt="avatar"/>
     </div>
   )
 }
