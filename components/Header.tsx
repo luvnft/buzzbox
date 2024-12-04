@@ -36,10 +36,10 @@ function Header() {
    },[searchValue])
 
   return (
-    <div className="grid grid-cols-3 border-b-2 border-white  p-4 shadow-lg sticky top-0 z-50 bg-black">
+    <div className="sticky top-0 z-50 grid grid-cols-3 p-4 bg-black border-b-2 border-white shadow-lg">
         {/* Header icon */}
         <div className="cursor-pointer">
-            <div className="relative w-40  h-20">
+            <div className="relative w-40 h-20">
                 <Link href="/">
                 <Image src="https://i.imgur.com/D2c16LH.png" fill className="object-contain" alt="header icon"/>
                 </Link>
@@ -47,10 +47,10 @@ function Header() {
         </div>
 
         {/* Search  */}
-        <div className="my-auto z-50">
-            <form className="border-2 flex rounded-lg border-white z-10 py-1 px-3">
-                <input value={searchValue} onChange={(e: React.ChangeEvent<HTMLInputElement>)=> setSearchValue(e.target.value)} type="text" className="bg-transparent text-md outline-none flex-grow" onClick={()=>fillData()} placeholder="Search text here.."/>
-                <MagnifyingGlassIcon className="h-10 w-10 cursor-pointer text-white"/>
+        <div className="z-50 my-auto">
+            <form className="z-10 flex px-3 py-1 border-2 border-white rounded-lg">
+                <input value={searchValue} onChange={(e: React.ChangeEvent<HTMLInputElement>)=> setSearchValue(e.target.value)} type="text" className="flex-grow bg-transparent outline-none text-md" onClick={()=>fillData()} placeholder="Search memes here.."/>
+                <MagnifyingGlassIcon className="w-10 h-10 text-white cursor-pointer"/>
             </form>
 
             {searchValue && (
@@ -61,7 +61,7 @@ function Header() {
                             <p key={res.id} onClick={()=>{
                                 router.push(`/space/${res.topic}`)
                                 setSearchValue("");
-                            }} className="text-black hover:font-bold hover:cursor-pointer px-4 border-b-2 duration-200 ease-in-out  transform transition last:border-b-0">
+                            }} className="px-4 text-black transition duration-200 ease-in-out transform border-b-2 hover:font-bold hover:cursor-pointer last:border-b-0">
                                 s/{res.topic}
                             </p>
                        
@@ -75,14 +75,14 @@ function Header() {
     
         
         {/* right section */}
-        <div className="flex my-auto justify-end">
+        <div className="flex justify-end my-auto">
             {/* conditional rendering of div block and component based on authentication */}
-            <div onClick={()=> session ? signOut() : signIn()} className='flex bg-white text-black rounded-xl px-4 py-4'>
-                <div className='my-auto cursor-pointer border-r-2 pr-3'>
+            <div onClick={()=> session ? signOut() : signIn()} className='flex px-4 py-4 text-black bg-white rounded-xl'>
+                <div className='pr-3 my-auto border-r-2 cursor-pointer'>
                     <p>{session ? (
                         <>
                             <p className="text-sm font-semibold">Welcome,</p>
-                            <p className="tuncate font-semibold text-xs">{session?.user?.name}!</p>
+                            <p className="text-xs font-semibold tuncate">{session?.user?.name}!</p>
                         </>
                         
                         ): "Sign In"
@@ -91,9 +91,9 @@ function Header() {
                 </div>
                 
                 {session ? (
-                    <ArrowRightIcon className='h-6 my-auto pl-3 cursor-pointer'/>
+                    <ArrowRightIcon className='h-6 pl-3 my-auto cursor-pointer'/>
                 ) : (
-                    <UserIcon className='h-6 my-auto pl-3 cursor-pointer'/>
+                    <UserIcon className='h-6 pl-3 my-auto cursor-pointer'/>
                 )}
             </div>
         </div>

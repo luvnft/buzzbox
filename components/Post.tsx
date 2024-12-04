@@ -170,7 +170,7 @@ function Post({post}: Props) {
     }
 
     const promotion = {
-        url : `https://buzzbox-next.vercel.app/post/${post?.id}`,
+        url : `https://meme.hahz.live/post/${post?.id}`,
         title: `Check out my post on this awesome site --> ${post?.title}`
     }
 
@@ -185,20 +185,20 @@ function Post({post}: Props) {
 
   return (
     
-<div className="rounded-md flex cursor-pointer border border-gray-600 bg-zinc-900 shadow-sm hover:border hover:border-gray-300 pb-2 mb-2">
-        <div className="flex items-center flex-col justify-start space-y-1 rounded-l-md bg-zinc-900 p-4 text-gray-400">
+<div className="flex pb-2 mb-2 border border-gray-600 rounded-md shadow-sm cursor-pointer bg-zinc-900 hover:border hover:border-gray-300">
+        <div className="flex flex-col items-center justify-start p-4 space-y-1 text-gray-400 rounded-l-md bg-zinc-900">
             <ArrowUpIcon onClick={()=>upVote(true)}  className={`voteButtons h-6 hover:text-red-400 ${vote && `text-red-400 scale-110 font-extrabold`}`}/>
             <p className="text-xl font-bold text-white">{displayVotes(data)}</p>
             <ArrowDownIcon onClick={()=>upVote(false)} className={`voteButtons hover:text-blue-400 ${vote === false && 'text-blue-400 scale-110 font-extrabold'} `}/>
         </div>
-        <div className="p-3 pb-1 w-full">
+        <div className="w-full p-3 pb-1">
         <Link href={`/post/${post?.id}`}>
-            {post?.repost && <p className="flex text-xs text-center my-auto text-gray-400 mb-2 ">
-                <ArrowPathIcon className="h-3 w-3 mr-1"/>
+            {post?.repost && <p className="flex my-auto mb-2 text-xs text-center text-gray-400 ">
+                <ArrowPathIcon className="w-3 h-3 mr-1"/>
                 <span className="my-auto">Reposted from {post?.reposted_from}</span>
                 </p>}
             {/* Header */}
-            <div className="flex space-x-2 items-center">
+            <div className="flex items-center space-x-2">
             <Avatar seed={post?.discussion.topic} />
             <p className="text-xs text-gray-400">
                 <Link href={`/space/${post?.discussion.topic}`}>
@@ -215,30 +215,30 @@ function Post({post}: Props) {
             {/* Image */}
             {
                 post.image !== '' &&(
-                <img src={post?.image}  className="w-full relative"/>
+                <img src={post?.image}  className="relative w-full"/>
                 )
             }
             </Link>
             
             {/* Footer */}
-            <div className="flex justify-evenly mt-3 space-x-4 text-gray-400 ">
+            <div className="flex mt-3 space-x-4 text-gray-400 justify-evenly ">
             <Link href={`/post/${post?.id}`}>
                 <div className="postButtons hover:text-red-400">
-                    <ChatBubbleLeftEllipsisIcon  className="h-6 w-6 "/>
+                    <ChatBubbleLeftEllipsisIcon  className="w-6 h-6 "/>
                     <p className="">{post.comment?.length}</p>
                 </div>
             </Link>
                
 
                 <button onClick={()=>reposted()} disabled={!session}  className={`postButtons ${session && 'hover:text-green-400'}`}>
-                    <ArrowPathIcon  className="h-6 w-6"/>
+                    <ArrowPathIcon  className="w-6 h-6"/>
                     <p className="hidden sm:inline">Repost</p>
                 </button>
 
                 
                 
             {openShare ? (
-                <div className="flex sticky space-x-3 items-center bg-neutral-800 px-3 py-1 rounded-xl">
+                <div className="sticky flex items-center px-3 py-1 space-x-3 bg-neutral-800 rounded-xl">
                     <FacebookShareButton url={"popcorn.com"} quote={promotion.title}>
                         <FacebookIcon className="shareButtons" round />
                     </FacebookShareButton>
@@ -257,17 +257,17 @@ function Post({post}: Props) {
                 </div>
             ) : (
                 <div onClick={()=>setOpenShare(true)} className="postButtons hover:text-white">
-                    <ShareIcon  className="h-6 w-6  "/>
+                    <ShareIcon  className="w-6 h-6 "/>
                     <p className="hidden sm:inline">Share</p>
                 </div>
             )}
                 
 
                 {session && session?.user?.name === post?.username && (
-                    <div  className="flex bg-neutral-800 px-4 rounded-xl justify-around space-x-10">
+                    <div  className="flex justify-around px-4 space-x-10 bg-neutral-800 rounded-xl">
                        <Link href={`/edit/${post?.id}`}>
                             <div className={`postButtons ${session && session?.user?.name === post?.username && 'hover:text-blue-400'}`}>
-                                <PencilSquareIcon  className="h-6 w-6"/>
+                                <PencilSquareIcon  className="w-6 h-6"/>
                                 <p className="hidden sm:inline">Edit</p>
                             </div>
                         </Link>

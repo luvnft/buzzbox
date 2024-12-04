@@ -19,9 +19,9 @@ function MyApp({ Component, pageProps: {session, ...pageProps} }: AppProps) {
       <div className='h-screen overflow-y-scroll'>
         {/* Next js's Head component for icon and label */}
         <Head>
-            <title>Buzz Box</title>
-            <meta name="description" content="Buzz Box" />
-            <link rel="icon" href="https://i.imgur.com/ZnrUWVB.png" />
+            <title>MEME.HAHZ.LIVE</title>
+            <meta name="description" content="MEMECOIN Social Media" />
+            <link rel="icon" href="https://i.imgur.com/Ag28iXq.jpeg" />
         </Head>
         {/* Header passing as a global component through _app */}
         <Header />
