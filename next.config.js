@@ -5,7 +5,15 @@ const nextConfig = {
   images: {
     domains: ["i.imgur.com"]
   },
-  
-}
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://postgresql.memcoin.stepzen.net/api/memecoin/:path*', // StepZen endpoint
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
+
